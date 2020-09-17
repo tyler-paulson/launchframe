@@ -1,7 +1,10 @@
 /* :: Import Dependencies
 {+} ---------------------------------- */
+import 'gsap';
 import ScrollMagic from 'scrollmagic';
+import 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
 global.ScrollMagic = ScrollMagic;
+
 
 /* :: Import Local
 {+} ---------------------------------- */

@@ -33,6 +33,7 @@
     },
     "dependencies": {
         "bourbon": "^7.0.0",
+        "gsap": "^2.1.3",
         "jquery": "^3.5.1",
         "scrollmagic": "^2.0.7",
         "tailwindcss": "^1.8.10",
