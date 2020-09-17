@@ -67,5 +67,9 @@ module.exports = {
         rotate: ['responsive', 'hover', 'group-hover'],
         skew: ['responsive', 'hover', 'group-hover']
     },
-    plugins: [require('tailwindcss-transitions')(), require('tailwindcss-transforms')()]
+    plugins: [],
+    future: {
+        removeDeprecatedGapUtilities: true,
+        purgeLayersByDefault: true
+    }
 };

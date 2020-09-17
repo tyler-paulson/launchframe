@@ -14,12 +14,7 @@ mix.webpackConfig({
     resolve: {
         extensions: ['.js'],
         alias: {
-            TweenLite: 'gsap/src/uncompressed/TweenLite.js',
-            TweenMax: 'gsap/src/uncompressed/TweenMax.js',
-            TimelineLite: 'gsap/src/uncompressed/TimelineLite.js',
-            TimelineMax: 'gsap/src/uncompressed/TimelineMax.js',
-            ScrollMagic: 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js',
-            'animation.gsap': 'scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js'
+            ScrollMagic: 'scrollmagic/scrollmagic/uncompressed/ScrollMagic.js'
         }
     }
 });
@@ -42,12 +37,14 @@ mix.browserSync({
 {+} ---------------------------------- */
 mix.webpackConfig({
     plugins: [
-        new CopyWebpackPlugin([
-            {
-                from: `${source}/images`,
-                to: 'images'
-            }
-        ]),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: `${source}/images`,
+                    to: 'images'
+                }
+            ]
+        }),
         new ImageminPlugin({
             test: /\.(jpe?g|png|gif|svg)$/i,
             plugins: [
@@ -62,9 +59,11 @@ mix.webpackConfig({
 /* :: JS, Sass, & Css
 {+} ---------------------------------- */
 mix.js(`${source}/js/main.js`, `${dist}/js`)
-    .extract(['jquery', 'vue', 'gsap', 'scrollmagic'])
+    .extract(['jquery', 'vue', 'scrollmagic'])
     .sass(`${source}/sass/main.scss`, `${dist}/css`, {
-        outputStyle: mix.inProduction() ? 'compressed' : 'expanded'
+        sassOptions: {
+            outputStyle: mix.inProduction() ? 'compressed' : 'expanded'
+        }
     })
     .options({
         processCssUrls: false,
